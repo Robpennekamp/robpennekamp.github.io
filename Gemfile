@@ -2,8 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3"
-gem "jekyll-remote-theme", "~> 0.4.3"
+# Use the GitHub Pages meta-gem so local builds match the Pages environment
+gem "github-pages", group: :jekyll_plugins
 
 gem "html-proofer", "~> 5.0", group: :test
 
