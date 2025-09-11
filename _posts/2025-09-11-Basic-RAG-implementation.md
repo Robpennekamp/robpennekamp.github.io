@@ -1,3 +1,8 @@
+---
+title: "Basic RAG Implementation"
+# Optional: tags: [RAG, AI, Retrieval]
+---
+
 # CleverIT RAG System
 
 ## Project Overview
