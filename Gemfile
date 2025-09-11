@@ -6,6 +6,7 @@ source "https://rubygems.org"
 gem "jekyll", "~> 4.3"
 gem "jekyll-remote-theme", "~> 0.4.3"
 gem "jekyll-include-cache", "~> 0.2.1"
+gem "jekyll-paginate", "~> 1.1"
 
 gem "html-proofer", "~> 5.0", group: :test
 
