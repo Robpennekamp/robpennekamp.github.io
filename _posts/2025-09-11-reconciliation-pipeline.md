@@ -1,97 +1,90 @@
----
-title: "Reconciliation Pipeline"
-# Optional: tags: [Data Engineering, Pipelines]
----
-
 # Data Pipeline Reconciliation System
 
-## Project Overview
-A robust, enterprise-grade data reconciliation pipeline built with Python that processes, validates, and reconciles large-scale data streams from multiple sources. The system handles millions of records daily with built-in error recovery, duplicate detection, and comprehensive monitoring.
+## Overview
+Python-based data reconciliation pipeline that processes and validates data streams from multiple sources. Handles millions of records daily with error recovery, duplicate detection, and monitoring capabilities.
 
-## Technical Architecture
+## Architecture
 
-### Core Components
+### Data Ingestion
+- **Protocols**: SFTP, Database connections, REST APIs
+- **File formats**: CSV, structured text, nested fields
+- **Features**:
+  - Automatic file discovery with pattern matching
+  - Date-based file selection
+  - Configurable filtering rules
 
-#### 1. **Data Ingestion Layer**
-- Multi-protocol connector system (SFTP, Database, API)
-- Automatic file discovery with configurable filtering
-- Support for various data formats (CSV, structured text, nested fields)
-- Intelligent date-based and pattern-based file selection
+### Processing Engine
+- **Architecture**: Modular processor system per data type
+- **Capabilities**:
+  - Field mapping and transformation
+  - Nested field extraction (comma-separated values)
+  - Schema validation with business rules
+  - Real-time quality checks
 
-#### 2. **Processing Engine**
-- Modular processor architecture for different data types
-- Field mapping and transformation pipeline
-- Nested field extraction (comma-separated values within fields)
-- Custom schema validation with configurable business rules
-- Real-time data quality checks and error logging
+### Reconciliation Process
+- **Stages**: Staging → Validation → Production
+- **Features**:
+  - Duplicate detection via composite keys
+  - Session-based record correlation
+  - Configurable matching algorithms
+  - State management with .processed/.reconciled markers
 
-#### 3. **Data Reconciliation**
-- Multi-stage reconciliation process (staging → validation → production)
-- Duplicate detection using composite keys
-- Session-based record correlation
-- Configurable matching algorithms for data correlation
+### Database Design
+- **Schema**: Optimized indexing strategies
+- **Operations**:
+  - Batch inserts with transaction management
+  - Automatic table creation
+  - Schema migration tools
+  - Support for OLTP and OLAP workloads
 
-#### 4. **Database Layer**
-- Optimized schema design with proper indexing strategies
-- Batch insert operations with transaction management
-- Automatic table creation and schema migration tools
-- Support for both transactional and analytical workloads
+## Technology Stack
 
-### Key Features
+| Category | Technologies |
+|----------|-------------|
+| **Language** | Python 3.10+ |
+| **Database** | MariaDB/MySQL, SQLAlchemy ORM |
+| **Configuration** | Pydantic (type-safe configs) |
+| **Monitoring** | Victoria Metrics, Grafana, Prometheus |
+| **Containerization** | Docker, Docker Compose |
+| **Data Processing** | Pandas, NumPy, Polars |
+| **Testing** | Pytest |
 
-#### **Reliability & Fault Tolerance**
-- Comprehensive error handling with detailed logging
-- Automatic retry mechanisms for transient failures
-- File processing state management (.processed, .reconciled markers)
-- Row-level error tracking and reporting
+## Implementation Details
 
-#### **Performance Optimization**
-- Batch processing with configurable chunk sizes
-- Memory-efficient streaming for large files
+### Error Handling
+- Row-level error tracking
+- Automatic retry for transient failures
+- Detailed logging per processing stage
+- Failed record isolation and reporting
+
+### Performance Optimization
+- Configurable batch processing (chunk sizes)
+- Memory-efficient file streaming
 - Database connection pooling
-- Parallel processing capabilities
+- Parallel processing support
 
-#### **Data Quality & Validation**
-- Schema-based validation with custom rules
-- Field-level data type checking
-- Business rule validation (codes, ranges, patterns)
-- Anomaly detection and alerting
+### Data Validation
+- Schema-based field validation
+- Data type checking
+- Business rule enforcement (codes, ranges, patterns)
+- Anomaly detection algorithms
 
-#### **Monitoring & Observability**
-- Integration with Victoria Metrics for time-series metrics
-- Grafana dashboards for real-time monitoring
-- Detailed processing statistics and performance metrics
-- Job execution history tracking
+## Performance Metrics
 
-## Technical Stack
+| Metric | Value |
+|--------|-------|
+| Daily file volume | Thousands of files |
+| Record processing | Millions daily |
+| File size range | KB to GB |
+| Processing speed | Sub-second per record |
+| System uptime | 99.9% |
+| Scaling | Horizontal via multiple instances |
 
-- **Language**: Python 3.10+
-- **Database**: MariaDB/MySQL with SQLAlchemy ORM
-- **Configuration**: Pydantic for type-safe configuration management
-- **Monitoring**: Victoria Metrics, Grafana, Prometheus-compatible metrics
-- **Containerization**: Docker & Docker Compose
-- **Data Processing**: Pandas, NumPy for efficient data manipulation
-- **Testing**: Pytest with comprehensive test coverage
-
-## System Performance
-
-- Processes thousands of files daily with 99.9% uptime
-- Handles files from KBs to GBs with sub-second per-record processing
-- Horizontal scaling through multiple processor instances
-- Self-healing capabilities with automatic retry mechanisms
-
-## Key Achievements
-
-- Significantly improved processing performance and reduced error rates
-- Successfully scaled to handle substantial data growth
-- Automated previously manual reconciliation processes
-- Maintained high accuracy across millions of records
-
-## Technical Challenges Solved
-
-- Implemented efficient algorithms for correlating records across multiple data sources
-- Optimized database operations and memory usage for large-scale processing
-- Built robust validation to handle various data formats and edge cases
-- Integrated with existing infrastructure and monitoring systems
+## Monitoring Infrastructure
+- **Metrics**: Processing statistics, error rates, performance data
+- **Dashboards**: Real-time Grafana visualizations
+- **History**: Job execution tracking and audit trails
+- **Alerts**: Automated anomaly notifications
 
 ---
+*Project Period: March 2025 - Present*
